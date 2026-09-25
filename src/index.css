@@ -1,0 +1,122 @@
+@import "tailwindcss";
+
+/* ------------------------------------------------------------------ *
+ * OrderWise design tokens — taken from the logo.
+ * Cool paper base · deep teal ink · OrderWise green accent.
+ * Brick stays reserved for warnings (expired, low stock, errors).
+ * ------------------------------------------------------------------ */
+@theme {
+  --font-sans: "Geist", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-mono: "Geist Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --color-paper: #f5f7f6;       /* app background */
+  --color-surface: #ffffff;     /* raised surfaces (used sparingly) */
+  --color-ink: #0c2626;         /* primary text — logo's deep teal */
+  --color-ink-soft: #3b524f;    /* secondary text */
+  --color-muted: #71817e;       /* tertiary / labels */
+  --color-line: #e2e8e5;        /* hairline borders */
+  --color-line-strong: #cfd8d4; /* emphasised borders */
+
+  --color-brand: #087e4d;       /* the one accent — logo green, AA on paper */
+  --color-brand-deep: #076640;
+  --color-brand-bright: #3fcc51; /* logo highlight; decorative only */
+  --color-brand-tint: #dcf1e4;  /* accent wash */
+
+  --color-brick: #bb4430;       /* warnings / destructive */
+  --color-brick-deep: #9c3826;
+  --color-brick-tint: #f2ded7;
+  --color-ochre: #c1852f;       /* due-soon */
+  --color-pine: #0e7266;        /* success / fulfilled — logo teal */
+  --color-pine-tint: #d9eeea;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  font-feature-settings: "cv01", "cv03", "ss03";
+}
+
+::selection {
+  background: var(--color-brand);
+  color: #fff;
+}
+
+/* Numeric columns read as a ledger. */
+.tnum {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Understated warm scrollbar. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-line-strong) transparent;
+}
+*::-webkit-scrollbar { width: 8px; height: 8px; }
+*::-webkit-scrollbar-thumb {
+  background: var(--color-line-strong);
+  border-radius: 999px;
+}
+
+/* ------------------------------------------------------------------ *
+ * Motion — CSS-only, restrained (transform/opacity only).
+ * ------------------------------------------------------------------ */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+@keyframes breathe {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.45; transform: scale(0.82); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 0.25; transform: translateY(0); }
+  50%      { opacity: 1; transform: translateY(-2px); }
+}
+
+/* Staggered entrance — set --i on each row. */
+.rise {
+  opacity: 0;
+  animation: rise 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
+.fade { animation: fade 0.4s ease forwards; }
+
+.live-dot {
+  animation: breathe 2.4s ease-in-out infinite;
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-line) 25%,
+    #edf2ef 50%,
+    var(--color-line) 75%
+  );
+  background-size: 800px 100%;
+  animation: shimmer 1.6s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .rise { opacity: 1; }
+}

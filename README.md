@@ -1,10 +1,19 @@
 # OrderWise — web
 
 Role-based web dashboards for OrderWise (FYP, FAST-NUCES Karachi, 2026–27). The
-API lives in [`orderwise-backend`](../orderwise-backend).
+API lives in [`OrderWise-Backend`](https://github.com/sameerzuberi991/OrderWise-Backend).
 
 > **Status:** React + Vite (JavaScript) prototype. Per the proposal, this will
 > move to TypeScript.
+
+## Team plans
+
+Per-member plans for this repo (phases, order, and who does what, from the
+approved proposal):
+
+- [Unaiza](unaiza.plan.md): WhatsApp / NLU Lead
+- [Sameer](sameer.plan.md): Apps & Reconciliation Lead
+- [Faizan](faizan.plan.md): Core Engine Lead
 
 ## Setup
 
