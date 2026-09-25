@@ -1,0 +1,35 @@
+# OrderWise — web
+
+Role-based web dashboards for OrderWise (FYP, FAST-NUCES Karachi, 2026–27).
+Split out of the Zanjeer hackathon monorepo with its full commit history; the
+API lives in [`orderwise-backend`](../orderwise-backend).
+
+> **Status:** React + Vite (JavaScript) prototype carried over from the
+> hackathon. The UI still uses the Zanjeer name — the rebrand is the next step.
+> Per the proposal, this will move to TypeScript.
+
+## Setup
+
+Run the backend first (`orderwise-backend`, default `http://localhost:3001`).
+
+```bash
+npm install
+cp .env.example .env      # VITE_API_URL — base URL of the backend
+npm run dev               # http://localhost:5173
+```
+
+`npm run build` outputs a static site to `dist/`.
+
+## Pages
+
+| Route | What |
+|---|---|
+| `/retailer` | WhatsApp chat simulator — posts to the backend webhook, no WhatsApp needed |
+| `/distributor` | Incoming orders grouped by area, fulfil action, stock sidebar |
+| `/inventory` | Stock room: add items, edit price/stock/due date, remove expired |
+| `/brand` | Sales analytics (out of scope in the proposal — to be folded into the distributor dashboard) |
+
+## Deploying
+
+Any static host (e.g. Vercel, framework preset *Vite*). Set `VITE_API_URL` to
+the deployed backend URL at build time.
