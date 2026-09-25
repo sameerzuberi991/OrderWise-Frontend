@@ -1,12 +1,10 @@
 # OrderWise — web
 
-Role-based web dashboards for OrderWise (FYP, FAST-NUCES Karachi, 2026–27).
-Split out of the Zanjeer hackathon monorepo with its full commit history; the
+Role-based web dashboards for OrderWise (FYP, FAST-NUCES Karachi, 2026–27). The
 API lives in [`orderwise-backend`](../orderwise-backend).
 
-> **Status:** React + Vite (JavaScript) prototype carried over from the
-> hackathon. The UI still uses the Zanjeer name — the rebrand is the next step.
-> Per the proposal, this will move to TypeScript.
+> **Status:** React + Vite (JavaScript) prototype. Per the proposal, this will
+> move to TypeScript.
 
 ## Setup
 
